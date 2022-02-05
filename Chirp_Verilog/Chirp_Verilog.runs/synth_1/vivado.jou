@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Sat Feb  5 16:11:10 2022
+# Process ID: 8516
+# Current directory: C:/Project/Chirp_Verilog/Chirp_Verilog/Chirp_Verilog.runs/synth_1
+# Command line: vivado.exe -log Test_cordic.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Test_cordic.tcl
+# Log file: C:/Project/Chirp_Verilog/Chirp_Verilog/Chirp_Verilog.runs/synth_1/Test_cordic.vds
+# Journal file: C:/Project/Chirp_Verilog/Chirp_Verilog/Chirp_Verilog.runs/synth_1\vivado.jou
+# Running On: WIN-T9MF38RDMDH, OS: Windows, CPU Frequency: 2419 MHz, CPU Physical cores: 4, Host memory: 8379 MB
+#-----------------------------------------------------------
+source Test_cordic.tcl -notrace
