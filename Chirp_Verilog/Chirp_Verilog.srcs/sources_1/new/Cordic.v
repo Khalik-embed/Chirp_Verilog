@@ -11,7 +11,7 @@ module Cordic #(
     ,output  reg signed 		[DATA_WIDTH-1:0]			out_cos=0
 );
 
-localparam	N=14;
+localparam	N=16;
 localparam  DEGREE_WIDTH=24;
 localparam 	DATA_WIDTH_EXTENDED=DATA_WIDTH+3; //17
 
@@ -19,10 +19,10 @@ integer i;
 reg signed [DATA_WIDTH_EXTENDED-1:0] dphaze=0;
 reg signed [DATA_WIDTH_EXTENDED-1:0] dphaze_buf=0;
 reg signed [DEGREE_WIDTH-1:0] degree=0;
-reg signed [DATA_WIDTH+1:0]	x   	[N:0];
-reg signed [DATA_WIDTH+1:0]	y   	[N:0];
-reg signed [DEGREE_WIDTH-1:0]	z 		[N:0];
-reg signed [DEGREE_WIDTH-1:0] arctan 	[N:0];
+reg signed [DATA_WIDTH+1:0]	x   	[N-1:0];
+reg signed [DATA_WIDTH+1:0]	y   	[N-1:0];
+reg signed [DEGREE_WIDTH-1:0]	z 		[N-1:0];
+reg signed [DEGREE_WIDTH-1:0] arctan 	[N-1:0];
 
 
 
@@ -31,7 +31,7 @@ reg signed [DEGREE_WIDTH-1:0] arctan 	[N:0];
 always @(posedge clk ) begin
 	if (rst) begin
 		// reset
-		for (i=0;i<N+1;i=i+1) begin
+		for (i=0;i<N;i=i+1) begin
 			x[i]<=0;
 			y[i]<=0;
 			z[i]<=0;
@@ -82,7 +82,7 @@ initial begin
     arctan[ 14 ]=	24'd35 ;
     arctan[ 15 ]=	24'd17;
 
-    for (i=0;i<N+1;i=i+1) begin
+    for (i=0;i<N;i=i+1) begin
 		x[i]<=			17'b0;
 		y[i]<=			17'b0;
 		z[i]<=			24'b0;
@@ -92,7 +92,7 @@ initial begin
 	out_cos=1'b0;
 end
 
-reg [1:0]quadrant [N+1:0];
+reg [1:0]quadrant [N:0];
 reg signed [DEGREE_WIDTH-1:0] half_pi=			24'd1800_000;
 reg signed [DEGREE_WIDTH-1:0] quad_pi=			24'd900_000;
 reg signed [DEGREE_WIDTH-1:0] dphaze_mean_reg=	D_PHAZE_MEAN;
@@ -112,7 +112,7 @@ always @(posedge clk ) begin
 	degree<=24'b0;
 	dphaze<=24'b0;
 	dphaze_buf<=24'b0;
-	for (i=0;i<N+1;i=i+1) begin
+	for (i=0;i<N;i=i+1) begin
 		quadrant[i]=	2'b00;
 	end
 	end else begin
@@ -130,27 +130,27 @@ always @(posedge clk ) begin
 				quadrant[0]<=quadrant[0]+2'b10;
 		end
 
-     	for (i=1;i<N+2;i=i+1)
+     	for (i=1;i<N+1;i=i+1)
 			begin
 				quadrant[i]<=quadrant[i-1];
 			end
 
-     	casex (quadrant[N+1]) 
+     	casex (quadrant[N]) 
      		3'b00		:begin
-     						out_cos<=x[N]>>>1;
-							out_sin<=y[N]>>>1;
+     						out_cos<=x[N-1]>>>1;
+							out_sin<=y[N-1]>>>1;
      					end					
      		3'b01		:begin
-     						out_cos<=-(y[N]>>>1);
-							out_sin<=x[N]>>>1;
+     						out_cos<=-(y[N-1]>>>1);
+							out_sin<=x[N-1]>>>1;
      					end
      		3'b10		:begin
-     					    out_cos<=-(x[N]>>>1);
-							out_sin<=-(y[N]>>>1);
+     					    out_cos<=-(x[N-1]>>>1);
+							out_sin<=-(y[N-1]>>>1);
      					end 
      		3'b11		:begin
-     		     			out_cos<=y[N]>>>1;
-							out_sin<=-(x[N]>>>1);
+     		     			out_cos<=y[N-1]>>>1;
+							out_sin<=-(x[N-1]>>>1);
      					end	
 
      	endcase
