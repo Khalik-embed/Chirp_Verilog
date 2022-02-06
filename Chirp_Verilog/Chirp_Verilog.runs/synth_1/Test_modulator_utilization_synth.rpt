@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.2 (win64) Build 3367213 Tue Oct 19 02:48:09 MDT 2021
-| Date         : Sun Feb  6 03:34:22 2022
+| Date         : Sun Feb  6 09:22:40 2022
 | Host         : WIN-T9MF38RDMDH running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Test_modulator_utilization_synth.rpt -pb Test_modulator_utilization_synth.pb
 | Design       : Test_modulator

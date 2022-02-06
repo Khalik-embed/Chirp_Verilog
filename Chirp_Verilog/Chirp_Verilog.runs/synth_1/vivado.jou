@@ -2,8 +2,8 @@
 # Vivado v2021.2 (64-bit)
 # SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
 # IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
-# Start of session at: Sun Feb  6 03:34:03 2022
-# Process ID: 2076
+# Start of session at: Sun Feb  6 09:22:21 2022
+# Process ID: 1224
 # Current directory: C:/Project/Chirp_Verilog/Chirp_Verilog/Chirp_Verilog.runs/synth_1
 # Command line: vivado.exe -log Test_modulator.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Test_modulator.tcl
 # Log file: C:/Project/Chirp_Verilog/Chirp_Verilog/Chirp_Verilog.runs/synth_1/Test_modulator.vds
